@@ -1,0 +1,23 @@
+<mdb-card class="card">
+    <mdb-card-body>
+        <div class="md-form mb-5">                      
+            <select id="option" (change)="select($event)" #option class="form-control">
+                <option disabled selected>Account</option>
+                <option value="checking">Checking</option>
+                <option value="saving">Saving</option>
+              </select>             
+          </div>
+          <div class="md-form mb-4">          
+            <input type="number" id="defaultForm-pass" min="1" [(ngModel)]="amount" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-pass">Amount</label>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button mdbBtn class="btn text-white" (click)="deposit(); reset()" mdbWavesEffect>DEPOSIT</button>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <p class="success" *ngIf="success">{{success}}</p>
+          <p class="invalid" *ngIf="invalid">{{invalid}}</p>
+        </div>
+    </mdb-card-body>
+  </mdb-card>
