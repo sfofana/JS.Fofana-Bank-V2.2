@@ -33,7 +33,9 @@ export class AppComponent implements OnInit {
       this.user=data[0];
       localStorage[data[0].email]= this.sessionSet;
       console.dir(data[0]);
-    });
+    }, error => this.connection='Internal Error... contact me at: sufyanfofana@yahoo.com to run an instance of the backend');
+    // this.connection = this.server.message;
+    // console.log(this.connection);
   }
 
   get loginFormModalEmail() {
@@ -49,8 +51,7 @@ export class AppComponent implements OnInit {
       this.cancel();
       this.success = 'Sucessful login';
       this.router.navigate(['client']);
-      this.canLogout=true;
-      
+      this.canLogout=true;  
     }
     else{
       this.cancel();
