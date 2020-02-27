@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
+import { HttpInterceptorService } from './services/http-interceptor.service';
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,9 @@ export class AppComponent implements OnInit {
   private invalid ="";
   private sessionSet = 'set';
   public canLogout = false;
+  private connection ="";
 
-  constructor(private service: UserService, private router: Router) { }
+  constructor(private service: UserService, private router: Router, private server: HttpInterceptorService) { }
 
   ngOnInit() {
     this.validatingForm = new FormGroup({
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit {
     this.service.getAllUsers().subscribe(data=>{
       this.user=data[0];
       localStorage[data[0].email]= this.sessionSet;
+      console.dir(data[0]);
     });
   }
 
@@ -47,6 +50,7 @@ export class AppComponent implements OnInit {
       this.success = 'Sucessful login';
       this.router.navigate(['client']);
       this.canLogout=true;
+      
     }
     else{
       this.cancel();

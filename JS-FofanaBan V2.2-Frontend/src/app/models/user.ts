@@ -1,10 +1,14 @@
-import { Accounts } from "./accounts";
+import { Checking } from "./checking";
+import { Saving } from "./saving";
 
 export class User {
-    _id: string;
+    id: number;
     email: string;
     password: string;
-    accounts: Accounts;
+    firstname: string;
+    lastname: string;
+    checking: Checking;
+    saving: Saving;
 }
 
 

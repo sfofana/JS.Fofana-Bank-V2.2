@@ -28,20 +28,20 @@ export class TransferComponent implements OnInit {
   transfer(): void{
     console.dir(this.user);
     if(this.optionFrom == 'checking'){
-      this.lostAmount = this.user.accounts.checking - this.amount;
-      this.updateAmount = this.user.accounts.saving + this.amount;
-      this.user.accounts.checking = this.lostAmount;
-      this.user.accounts.saving = this.updateAmount;
-      this.service.updateUser(this.user._id,this.user).subscribe(data=>this.user=data);
+      this.lostAmount = this.user.checking.amount - this.amount;
+      this.updateAmount = this.user.saving.amount + this.amount;
+      this.user.checking.amount = this.lostAmount;
+      this.user.saving.amount = this.updateAmount;
+      this.service.updateUser(this.user).subscribe(data=>this.user=data);
       this.success='Successfully Transfer $'+this.amount+' from Checking Account';
       this.invalid ="";
     }
     if(this.optionFrom == 'saving'){
-      this.lostAmount = this.user.accounts.saving - this.amount;
-      this.updateAmount = this.user.accounts.checking + this.amount;
-      this.user.accounts.saving = this.lostAmount;
-      this.user.accounts.checking = this.updateAmount;
-      this.service.updateUser(this.user._id,this.user).subscribe(data=>this.user=data);
+      this.lostAmount = this.user.saving.amount - this.amount;
+      this.updateAmount = this.user.checking.amount + this.amount;
+      this.user.saving.amount = this.lostAmount;
+      this.user.checking.amount = this.updateAmount;
+      this.service.updateUser(this.user).subscribe(data=>this.user=data);
       this.success='Successfully Transfer $'+this.amount+' from Saving Account';
       this.invalid ="";
     }

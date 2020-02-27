@@ -20,6 +20,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@GetMapping("/connection")
+	public void connection(){
+		// endpoint to verify if EC2 is running
+	}
+	
 	@PostMapping("/user")
 	public User authenticstion(@RequestBody User user) {
 		return userService.getUser(user);
@@ -30,7 +35,7 @@ public class UserController {
 		return userService.updateUser(user);
 	}
 	
-	@GetMapping("user")
+	@GetMapping("/user")
 	public List<User> test(){
 		return userService.getUsers();
 	}
