@@ -8,18 +8,18 @@ import { catchError } from 'rxjs/operators';
 })
 export class HttpInterceptorService implements HttpInterceptor {
 
-  public message="";
+  private message="";
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
     return next.handle(req).pipe(catchError((error: HttpErrorResponse)=>{
       if (error instanceof HttpErrorResponse){
         if(req.url == 'http://localhost:9000/user'){
-          this.message='Internal Error... contact me at: sufyanfofana@yahoo.com to run an instance of the EC2';
-          console.log(this.message);
+          this.message='Internal Error... contact Sufyan at: sufyanfofana@yahoo.com to run an instance of the server';
+          return throwError(this.message);
         }
         return throwError('Internal Error');
       } else {
-        return throwError('Client Error');
+        return throwError('Server Error');
       }
     })
     );

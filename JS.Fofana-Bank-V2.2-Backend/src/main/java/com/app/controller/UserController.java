@@ -22,7 +22,7 @@ public class UserController {
 	
 	@GetMapping("/connection")
 	public void connection(){
-		// endpoint to verify if EC2 is running
+		// endpoint to verify if server is running
 	}
 	
 	@PostMapping("/user")

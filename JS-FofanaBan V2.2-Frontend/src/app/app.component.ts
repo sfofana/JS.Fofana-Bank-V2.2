@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   public canLogout = false;
   private connection ="";
 
-  constructor(private service: UserService, private router: Router, private server: HttpInterceptorService) { }
+  constructor(private service: UserService, private router: Router) { }
 
   ngOnInit() {
     this.validatingForm = new FormGroup({
@@ -33,9 +33,7 @@ export class AppComponent implements OnInit {
       this.user=data[0];
       localStorage[data[0].email]= this.sessionSet;
       console.dir(data[0]);
-    }, error => this.connection='Internal Error... contact me at: sufyanfofana@yahoo.com to run an instance of the backend');
-    // this.connection = this.server.message;
-    // console.log(this.connection);
+    }, error => this.connection=error);
   }
 
   get loginFormModalEmail() {
@@ -52,6 +50,7 @@ export class AppComponent implements OnInit {
       this.success = 'Sucessful login';
       this.router.navigate(['client']);
       this.canLogout=true;  
+      this.connection="";
     }
     else{
       this.cancel();
