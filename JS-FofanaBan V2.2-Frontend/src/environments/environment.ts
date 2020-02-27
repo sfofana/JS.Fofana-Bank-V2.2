@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  connection: "https://localhost:9000/connection",
+  connection: "http://localhost:9000/connection",
   url: "http://localhost:9000/user"
 };
 

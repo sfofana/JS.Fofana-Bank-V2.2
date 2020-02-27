@@ -27,7 +27,7 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public User authenticstion(@RequestBody User user) {
-		return userService.getUser(user);
+		return userService.authentication(user);
 	}
 	
 	@PutMapping("/user")

@@ -35,4 +35,15 @@ public class UserServiceImpl implements UserService{
 		return userData.findAll();
 	}
 
+	@Override
+	public User authentication(User user) {
+		User valid = userData.findByEmail(user.getEmail());
+		User response = new User();
+		
+		if(valid.getEmail().equals(user.getEmail())  && valid.getPassword().equals(user.getPassword())) {
+			response = valid;
+		}
+		return response;
+	}
+
 }
