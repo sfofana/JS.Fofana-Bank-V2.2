@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(['client']);
       this.canLogout=true;  
       this.connection="";
+      localStorage[data.email]= this.sessionSet;
     });
     // if(this.email == this.user.email && this.password == this.user.password){
     //   this.cancel();
