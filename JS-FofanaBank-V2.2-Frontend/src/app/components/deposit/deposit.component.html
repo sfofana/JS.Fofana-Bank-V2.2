@@ -3,8 +3,9 @@
         <div class="md-form mb-5">                      
             <select id="option" (change)="select($event)" #option class="form-control">
                 <option disabled selected>Account</option>
-                <option *ngIf="user.checking" value="{{user.checking.name}}">{{user.checking.name | titlecase}}</option>
-                <option *ngIf="user.saving" value="{{user.saving.name}}">{{user.saving.name | titlecase}}</option>
+                <option *ngFor="let account of user.accounts" value="{{account}}">
+                  {{account.name | titlecase}} | Ending With: {{account.id}}
+                </option>
               </select>             
           </div>
           <div class="md-form mb-4">          

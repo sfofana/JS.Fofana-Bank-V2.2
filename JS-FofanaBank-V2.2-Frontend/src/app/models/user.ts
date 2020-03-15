@@ -1,5 +1,4 @@
-import { Checking } from "./checking";
-import { Saving } from "./saving";
+import { Account } from "./account";
 
 export class User {
     id: number;
@@ -7,8 +6,7 @@ export class User {
     password: string;
     firstname: string;
     lastname: string;
-    checking: Checking;
-    saving: Saving;
+    accounts: Account[];
 }
 
 

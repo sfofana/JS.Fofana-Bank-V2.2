@@ -5,11 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.app.data.CheckingData;
-import com.app.data.SavingData;
+import com.app.data.AccountData;
 import com.app.data.UserData;
-import com.app.model.Checking;
-import com.app.model.Saving;
+import com.app.model.Account;
 import com.app.model.User;
 
 @SpringBootApplication
@@ -22,54 +20,77 @@ public class Application {
 	@Bean
 	public CommandLineRunner fillerData(
 				UserData userData,
-				CheckingData checkingData,
-				SavingData savingData
+				AccountData accountData
 			) {
 		return args -> {
 			
-			Checking c1 = new Checking();
-			c1.setId(1);
-			c1.setName("checking");
-			c1.setAmount(65034);
-			checkingData.save(c1);
-			
-			Checking c2 = new Checking();
-			c2.setId(2);
-			c2.setName("checking");
-			c2.setAmount(1111111);
-			checkingData.save(c2);
-			
-			Saving s1 = new Saving();
-			s1.setId(1);
-			s1.setName("saving");
-			s1.setAmount(235604);
-			savingData.save(s1);
-			
-			Saving s2 = new Saving();
-			s2.setId(2);
-			s2.setName("saving");
-			s2.setAmount(1111111);
-			savingData.save(s2);
-			
-			User u1 = new User();
-			u1.setId(1);
-			u1.setEmail("master@gmail.com");
-			u1.setPassword("demo");
-			u1.setFirstname("Amir");
-			u1.setLastname("Kamara");
-			u1.setChecking(c1);
-			u1.setSaving(s1);
+			User u1 = new User(
+					1, 
+					"Amir",
+					"Kamara",
+					"master@gmail.com",
+					"demo",
+					null
+					);				
 			userData.save(u1);
 			
-			User u2 = new User();
-			u2.setId(2);
-			u2.setEmail("system@gmail.com");
-			u2.setPassword("admin");
-			u2.setFirstname("System");
-			u2.setLastname("Admin");
-			u2.setChecking(c2);
-			u2.setSaving(s2);
+			User u2 = new User(
+					2, 
+					"Systyem",
+					"Admin",
+					"system@gmail.com",
+					"admin",
+					null
+					);	
 			userData.save(u2);
+			
+			Account a1 = new Account(
+					1001,
+					"saving",
+					321151,
+					u1
+					);
+			accountData.save(a1);
+			
+			Account a2 = new Account(
+					1002,
+					"checking",
+					4161.25,
+					u1
+					);
+			accountData.save(a2);
+			
+			Account a3 = new Account(
+					1003,
+					"saving",
+					63624.55,
+					u1
+					);
+			accountData.save(a3);	
+			
+			Account a4 = new Account(
+					1004,
+					"checking",
+					95447.15,
+					u1
+					);
+			accountData.save(a4);
+			
+			Account a5 = new Account(
+					1005,
+					"checking",
+					7161.23,
+					u2
+					);
+			accountData.save(a5);
+			
+			Account a6 = new Account(
+					1006,
+					"saving",
+					366545.14,
+					u2
+					);
+			accountData.save(a6);
 		};
 	}
 }
