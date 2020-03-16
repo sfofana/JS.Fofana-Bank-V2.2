@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { SubjectService } from './services/subject.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = "JS.Fofana Bank";
   validatingForm: FormGroup;
   public validateUser = new User();
@@ -40,7 +41,9 @@ export class AppComponent implements OnInit {
     //   localStorage[data[0].email]= this.sessionSet;
     //   console.dir(data[0]);
     // }, error => this.connection=error);
-    this.service.testConnection().subscribe(data=>this.connection="", error => this.connection=error);
+    this.service.testConnection()
+    .pipe(takeUntil(this.memory.unsubscribe))
+    .subscribe(data=>this.connection="", error => this.connection=error);
   }
 
   get loginFormModalEmail() {
@@ -54,7 +57,9 @@ export class AppComponent implements OnInit {
   login(){
     this.validateUser.email = this.email;
     this.validateUser.password = this.password;
-    this.service.authentication(this.validateUser).subscribe(data=>{
+    this.service.authentication(this.validateUser)
+    .pipe(takeUntil(this.memory.unsubscribe))
+    .subscribe(data=>{
       this.user=data;
       this.cancel();
       this.success = 'Sucessful login';
@@ -88,6 +93,11 @@ export class AppComponent implements OnInit {
     this.router.navigate(['']);
     localStorage.clear();
     this.canLogout=false;
+  }
+
+  ngOnDestroy(): void {
+    this.memory.unsubscribe.next();
+    this.memory.unsubscribe.complete();
   }
 }
 

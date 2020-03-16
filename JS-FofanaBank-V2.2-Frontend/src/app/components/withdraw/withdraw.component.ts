@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { AppComponent } from 'src/app/app.component';
 import { Account } from 'src/app/models/account';
 import { SubjectService } from 'src/app/services/subject.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-withdraw',
   templateUrl: './withdraw.component.html',
   styleUrls: ['./withdraw.component.scss']
 })
-export class WithdrawComponent implements OnInit {
+export class WithdrawComponent implements OnInit, OnDestroy {
 
   private user = new User();
   private amount: number = 0;
@@ -22,12 +23,13 @@ export class WithdrawComponent implements OnInit {
 
   constructor(
     private service: UserService, 
-    private session: AppComponent,
     private memory: SubjectService
     ) { }
 
   ngOnInit() {
-    this.user = this.session.user;
+    this.memory.refresh
+    .pipe(takeUntil(this.memory.unsubscribe))
+    .subscribe(data=>this.user=data);
     this.money = this.service.getWidthdrawAmounts()
   }
 
@@ -39,7 +41,9 @@ export class WithdrawComponent implements OnInit {
           data.amount = this.updateAmount;
         }
     });
-    this.service.updateUser(this.user).subscribe(data=>this.user=data);
+    this.service.updateUser(this.user)
+    .pipe(takeUntil(this.memory.unsubscribe))
+    .subscribe(data=>this.user=data);
     this.memory.changedInfo(this.user);
     this.success='Successfully Widthdrawn $'+this.amount+' from Checking Account';
     this.invalid ="";
@@ -63,4 +67,8 @@ export class WithdrawComponent implements OnInit {
     this.amount=0;
   }
 
+  ngOnDestroy(): void {
+    this.memory.unsubscribe.next();
+    this.memory.unsubscribe.complete();
+  }
 }

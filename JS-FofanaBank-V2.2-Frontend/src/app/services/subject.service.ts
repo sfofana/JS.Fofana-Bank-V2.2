@@ -10,6 +10,7 @@ export class SubjectService {
   constructor() { }
 
   public behavior = new BehaviorSubject<User>(null);
+  //public session = new BehaviorSubject<User>(null);
   public unsubscribe = new Subject();
   public refresh = this.behavior.asObservable();
 
