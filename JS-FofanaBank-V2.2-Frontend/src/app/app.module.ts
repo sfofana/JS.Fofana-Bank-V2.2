@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserService } from './services/user.service';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { SubjectService } from './services/subject.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
   ],
   providers: [
     UserService,
+    SubjectService,
     {provide: HTTP_INTERCEPTORS,useClass: HttpInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]

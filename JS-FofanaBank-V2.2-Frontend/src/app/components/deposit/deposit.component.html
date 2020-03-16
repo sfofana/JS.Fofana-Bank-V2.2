@@ -3,7 +3,7 @@
         <div class="md-form mb-5">                      
             <select id="option" (change)="select($event)" #option class="form-control">
                 <option disabled selected>Account</option>
-                <option *ngFor="let account of user.accounts" value="{{account}}">
+                <option *ngFor="let account of user.accounts" value="{{account.id}}">
                   {{account.name | titlecase}} | Ending With: {{account.id}}
                 </option>
               </select>             

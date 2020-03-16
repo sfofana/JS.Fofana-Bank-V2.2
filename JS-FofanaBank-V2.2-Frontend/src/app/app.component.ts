@@ -4,6 +4,7 @@ import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { SubjectService } from './services/subject.service';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,11 @@ export class AppComponent implements OnInit {
   public canLogout = false;
   private connection ="";
 
-  constructor(private service: UserService, private router: Router) { }
+  constructor(
+    private service: UserService, 
+    private router: Router,
+    private memory: SubjectService
+    ) { }
 
   ngOnInit() {
     this.validatingForm = new FormGroup({
@@ -56,6 +61,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(['client']);
       this.canLogout=true;  
       this.connection="";
+      this.memory.changedInfo(this.user);
       localStorage[data.email]= this.sessionSet;
     });
     // if(this.email == this.user.email && this.password == this.user.password){

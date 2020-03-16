@@ -14,7 +14,7 @@ import com.app.model.User;
 import com.app.service.UserService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 public class UserController {
 
 	@Autowired

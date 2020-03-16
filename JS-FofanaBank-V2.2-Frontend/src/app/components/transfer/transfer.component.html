@@ -3,16 +3,16 @@
         <div class="md-form mb-5">                      
             <select id="defaultForm-pass" (change)="selectFrom($event)" class="form-control">
                 <option value="" disabled selected>Acount From</option>
-                <option *ngFor="let account of user.accounts" value="{{user.checking.name}}">
-                  {{account.name | titlecase}} | {{account.id}}
+                <option *ngFor="let account of user.accounts" value="{{account.id}}">
+                  {{account.name | titlecase}} | Ending With: {{account.id}}
                 </option>
               </select>             
           </div>
           <div class="md-form mb-5">                      
             <select id="defaultForm-pass" (change)="selectTo($event)" class="form-control">
                 <option value="" disabled selected>Acount To</option>
-                <option *ngFor="let account of user.accounts" value="{{user.checking.name}}">
-                  {{account.name | titlecase}} | {{account.id}}
+                <option *ngFor="let account of user.accounts" value="{{account.id}}">
+                  {{account.name | titlecase}} | Ending With: {{account.id}}
                 </option>
               </select>             
           </div>

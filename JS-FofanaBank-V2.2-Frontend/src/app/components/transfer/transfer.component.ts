@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 import { AppComponent } from 'src/app/app.component';
 import { Account } from 'src/app/models/account';
+import { SubjectService } from 'src/app/services/subject.service';
 
 @Component({
   selector: 'app-transfer',
@@ -15,12 +16,16 @@ export class TransferComponent implements OnInit {
   private amount: number = 0;
   private updateAmount: number;
   private lostAmount: number;
-  private optionFrom: Account;
-  private optionTo: string;
+  private optionFrom: number;
+  private optionTo: number;
   private success: string;
   private invalid: string;
 
-  constructor(private service: UserService, private session: AppComponent) { }
+  constructor(
+    private service: UserService, 
+    private session: AppComponent,
+    private memory: SubjectService
+    ) { }
 
   ngOnInit() {
     this.user = this.session.user;
@@ -28,42 +33,30 @@ export class TransferComponent implements OnInit {
 
   transfer(): void{
     console.dir(this.user);
-    if(this.optionFrom){
+    if(this.optionFrom && this.optionTo){
       this.user.accounts.filter(data=>{
-        if(data.id = 1001){
+        if(data.id == this.optionFrom){
           this.updateAmount = data.amount + this.amount;
           data.amount = this.updateAmount;
-          this.service.updateUser(this.user).subscribe(data=>this.user=data);
-          this.success='Successfully Deposited $'+this.amount+' to Checking Account';
-          this.invalid ="";
+        }
+        if(data.id == this.optionTo){
+          this.lostAmount = data.amount - this.amount;
+          data.amount = this.lostAmount;
         }
       });
+      this.service.updateUser(this.user).subscribe(data=>this.user=data);
+      this.memory.changedInfo(this.user);
+      this.success='Successfully Deposited $'+this.amount+' to account ending with '+this.optionTo;
+      this.invalid ="";
     }
-      // this.lostAmount = this.user.checking.amount - this.amount;
-      // this.updateAmount = this.user.saving.amount + this.amount;
-      // this.user.checking.amount = this.lostAmount;
-      // this.user.saving.amount = this.updateAmount;
-      // this.service.updateUser(this.user).subscribe(data=>this.user=data);
-      // this.success='Successfully Transfer $'+this.amount+' from Checking Account';
-      // this.invalid ="";
-    //}
-    // if(this.optionFrom == 'saving'){
-    //   this.lostAmount = this.user.saving.amount - this.amount;
-    //   this.updateAmount = this.user.checking.amount + this.amount;
-    //   this.user.saving.amount = this.lostAmount;
-    //   this.user.checking.amount = this.updateAmount;
-    //   this.service.updateUser(this.user).subscribe(data=>this.user=data);
-    //   this.success='Successfully Transfer $'+this.amount+' from Saving Account';
-    //   this.invalid ="";
-    //}
     if(!(this.optionFrom || this.optionTo)) {
       this.invalid='Error with Transfer';
       this.success ="";
     }
-    // if(this.optionFrom == this.optionTo) {
-    //   this.invalid='To make a deposit see our Deposit Section';
-    //   this.success ="";
-    // };
+    if(this.optionFrom == this.optionTo) {
+      this.invalid='To make a deposit see our Deposit Section';
+      this.success ="";
+    };
   }
 
   selectFrom(option: any){

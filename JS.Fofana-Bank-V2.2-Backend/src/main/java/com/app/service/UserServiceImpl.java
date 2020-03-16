@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.data.AccountData;
 import com.app.data.UserData;
 import com.app.model.User;
 
@@ -13,6 +14,8 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserData userData;
+	@Autowired
+	private AccountData accountData;
 	
 	@Override
 	public User getUser(User user) {
@@ -26,6 +29,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User updateUser(User user) {
+		accountData.saveAll(user.getAccounts());
 		return userData.save(user);
 	}
 
