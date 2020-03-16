@@ -32,6 +32,7 @@ export class ClientComponent implements OnInit, OnDestroy {
   }
 
   authentication(){
+    //this.memory.session.subscribe(data=>this.user=data);
     if(!this.session.canLogout){
       this.router.navigate(['']);
     }

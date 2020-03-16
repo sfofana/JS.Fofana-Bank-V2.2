@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
-import { HttpInterceptorService } from './services/http-interceptor.service';
 import { SubjectService } from './services/subject.service';
 import { takeUntil } from 'rxjs/operators';
 
@@ -66,6 +65,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.router.navigate(['client']);
       this.canLogout=true;  
       this.connection="";
+      //this.memory.sessionInfo(this.user);
       this.memory.changedInfo(this.user);
       localStorage[data.email]= this.sessionSet;
     });
