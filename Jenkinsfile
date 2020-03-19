@@ -1,62 +1,31 @@
-node {
-    stage 'Clone the project'
-    git 'https://github.com/sfofana/JS.Fofana-Bank-V2.2.git'
-   
-    dir('js3') {
-        stage("Compilation and Analysis") {
-            parallel 'Compilation': {
-                sh "./mvnw clean install -DskipTests"
-            }, 'Static Analysis': {
-                stage("Checkstyle") {
-                    sh "./mvnw checkstyle:checkstyle"
-                     
-                    step([$class: 'CheckStylePublisher',
-                      canRunOnFailed: true,
-                      defaultEncoding: '',
-                      healthy: '100',
-                      pattern: '**/target/checkstyle-result.xml',
-                      unHealthy: '90',
-                      useStableBuildAsReference: true
-                    ])
-                }
+pipeline {
+    agent any
+
+    stages {
+        stage('Compile Stage') {
+
+            steps
+                withMaven(mave: 'my_maven_3.3.9') {
+                    sh 'mvn clean compile'
+
             }
         }
-         
-        stage("Tests and Deployment") {
-            parallel 'Unit tests': {
-                stage("Runing unit tests") {
-                    try {
-                        sh "./mvnw test -Punit"
-                    } catch(err) {
-                        step([$class: 'JUnitResultArchiver', testResults: 
-                          '**/target/surefire-reports/TEST-*UnitTest.xml'])
-                        throw err
-                    }
-                   step([$class: 'JUnitResultArchiver', testResults: 
-                     '**/target/surefire-reports/TEST-*UnitTest.xml'])
-                }
-            }, 'Integration tests': {
-                stage("Runing integration tests") {
-                    try {
-                        sh "./mvnw test -Pintegration"
-                    } catch(err) {
-                        step([$class: 'JUnitResultArchiver', testResults: 
-                          '**/target/surefire-reports/TEST-'
-                            + '*IntegrationTest.xml'])
-                        throw err
-                    }
-                    step([$class: 'JUnitResultArchiver', testResults: 
-                      '**/target/surefire-reports/TEST-'
-                        + '*IntegrationTest.xml'])
-                }
+
+        stage('Testing Stage') {
+
+            steps
+                withMaven(mave: 'my_maven_3.3.9') {
+                    sh 'mvn test'
+
             }
-             
-            stage("Staging") {
-                sh "pid=\$(lsof -i:8989 -t); kill -TERM \$pid "
-                  + "|| kill -KILL \$pid"
-                withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                    sh 'nohup ./mvnw spring-boot:run -Dserver.port=8989 &'
-                }   
+        }
+
+        stage('Deployment Stage') {
+
+            steps
+                withMaven(mave: 'my_maven_3.3.9') {
+                    sh 'mvn deploy'
+
             }
         }
     }
