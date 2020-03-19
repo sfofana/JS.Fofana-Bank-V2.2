@@ -3,25 +3,27 @@ pipeline {
     tools {
         maven 'my_maven_3.3.9'
     }
+    environment {
+        EMAIL_RECIPIENTS = 'sufyanfofana@yahoo.com'
     stages {
         stage('Compile Stage') {
 
             steps {
-                 bat 'mvn clean compile'
+                 sh 'mvn clean compile'
             }               
         }
 
         stage('Testing Stage') {
 
             steps {
-                bat 'mvn test'
+                sh 'mvn test'
             }                
         }
 
         stage('Deployment Stage') {
 
             steps {
-                bat 'mvn deploy'
+                sh 'mvn deploy'
             }                
         }
     }
