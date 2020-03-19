@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         EMAIL_RECIPIENTS = 'sufyanfofana@yahoo.com'
+    }
     stages {
         stage('Compile Stage') {
 
