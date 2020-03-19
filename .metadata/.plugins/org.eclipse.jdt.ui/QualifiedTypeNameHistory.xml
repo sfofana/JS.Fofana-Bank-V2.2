@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="org.springframework.data.jpa.repository.JpaRepository"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="javax.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="com.app.model.Account"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIdentityInfo"/>
+    <fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.ObjectIdGenerators"/>
+    <fullyQualifiedTypeName name="com.app.data.AccountData"/>
+</qualifiedTypeNameHistroy>

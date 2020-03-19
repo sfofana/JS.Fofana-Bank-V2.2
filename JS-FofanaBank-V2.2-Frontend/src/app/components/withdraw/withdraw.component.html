@@ -1,0 +1,25 @@
+<mdb-card class="card">
+    <mdb-card-body>
+        <div class="md-form mb-5">                      
+            <select id="defaultForm-pass" (change)="select($event)" class="form-control">
+                <option disabled selected>Acount</option>
+                <option *ngFor="let account of user.accounts" value="{{account.id}}">
+                  {{account.name | titlecase}} | Ending With: {{account.id}}
+                </option>
+              </select>             
+          </div>
+          <div class="md-form mb-4">          
+            <select id="defaultForm-pass" (change)="selectAmount($event)" class="form-control">
+                <option disabled selected>Amount</option>
+                <option *ngFor="let val of money" value="{{val}}">{{val}}</option>
+              </select> 
+        </div>
+        <div class="d-flex justify-content-center">
+          <button mdbBtn class="btn text-white" (click)="withdraw(); reset()" mdbWavesEffect>WITHDRAW</button>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <p class="success" *ngIf="success">{{success}}</p>
+          <p class="invalid" *ngIf="invalid">{{invalid}}</p>
+        </div>
+    </mdb-card-body>
+  </mdb-card>
