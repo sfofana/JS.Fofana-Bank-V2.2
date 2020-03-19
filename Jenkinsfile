@@ -2,7 +2,7 @@ node {
     stage 'Clone the project'
     git 'https://github.com/sfofana/JS.Fofana-Bank-V2.2.git'
    
-    dir('spring-jenkins-pipeline') {
+    dir('js3') {
         stage("Compilation and Analysis") {
             parallel 'Compilation': {
                 sh "./mvnw clean install -DskipTests"
