@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userData.findAll();
 	}
-// tes
+// test
 	@Override
 	public User authentication(User user) {
 		User valid = userData.findByEmail(user.getEmail());
