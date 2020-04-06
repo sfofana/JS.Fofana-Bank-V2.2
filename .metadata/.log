@@ -1621,3 +1621,75 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 2 2 2020-04-05 20:22:20.641
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.698
+!MESSAGE Preparing classpath changed notification JS.Fofana-Bank-V2.2-Backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.699
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.713
+!MESSAGE classpath=110 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.720
+!MESSAGE buffering callback sts4.classpath.ZmPaFImQ JS.Fofana-Bank-V2.2-Backend false 110
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.721
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:15.748
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.422
+!MESSAGE Preparing classpath changed notification JS.Fofana-Bank-V2.2-Backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.423
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.435
+!MESSAGE classpath=110 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.442
+!MESSAGE buffering callback sts4.classpath.ZmPaFImQ JS.Fofana-Bank-V2.2-Backend false 110
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.443
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:26:20.468
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.644
+!MESSAGE Preparing classpath changed notification JS.Fofana-Bank-V2.2-Backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.646
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.658
+!MESSAGE classpath=111 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.668
+!MESSAGE buffering callback sts4.classpath.ZmPaFImQ JS.Fofana-Bank-V2.2-Backend false 111
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.669
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:43.690
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.548
+!MESSAGE Preparing classpath changed notification JS.Fofana-Bank-V2.2-Backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.549
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.562
+!MESSAGE classpath=111 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.572
+!MESSAGE buffering callback sts4.classpath.ZmPaFImQ JS.Fofana-Bank-V2.2-Backend false 111
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.573
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.600
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]

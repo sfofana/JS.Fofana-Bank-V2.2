@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
     // }, error => this.connection=error);
     this.service.testConnection()
     .pipe(takeUntil(this.memory.unsubscribe))
-    .subscribe(data=>this.connection="", error => this.connection=error);
+    .subscribe(data=>this.connection="", error => this.connection =error);
   }
 
   get loginFormModalEmail() {
@@ -55,20 +55,18 @@ export class AppComponent implements OnInit, OnDestroy {
     return this.validatingForm.get('loginFormModalPassword');
   }
 
-  login(){
+  login() {
     this.validateUser = {email: this.email, password: this.password};
-    console.log(this.email);
-    //this.validateUser.password = this.password;
     this.service.authentication(this.validateUser)
     .pipe(takeUntil(this.memory.unsubscribe))
     .subscribe(data=>{
       this.user=data;
-      this.cancel();
+      this.cancel(); 
       this.success = 'Sucessful login';
       this.router.navigate(['client']);
       this.canLogout=true;  
       this.connection="";
-      //this.memory.sessionInfo(this.user);
+      // this.memory.sessionInfo(this.user);
       this.memory.changedInfo(this.user);
       localStorage[data.email]= this.sessionSet;
     });
