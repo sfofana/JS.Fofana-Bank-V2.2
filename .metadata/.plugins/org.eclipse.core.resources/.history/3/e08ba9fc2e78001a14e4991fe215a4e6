@@ -19,7 +19,7 @@ public class LoggingAdvice {
 	
 	Logger log = LoggerFactory.getLogger(LoggingAdvice.class);
 	
-	@Pointcut(value="execution(* com.app.*.*.*(..))")
+	@Pointcut(value="execution(* com.app.*.*.*(..)")
 	public void PointCut() {
 		
 	}
@@ -33,13 +33,13 @@ public class LoggingAdvice {
 		try {
 			log.info("Method invoked "+className+" : "+methodName+
 					"("+mapper.writeValueAsString(objects)+")");
-		} catch (JsonProcessingException e) {
+		} catch (JsonProcessingException e1) {
 			throw new BusinessException("Unable to invoke method");
 		}
 		Object object;
 		try {
 			object = joinPoint.proceed();
-			log.info(className+" : "+methodName+
+			log.info("Method invoked "+className+" : "+methodName+
 					"("+mapper.writeValueAsString(objects)+")");
 		} catch (Throwable e) {
 			throw new BusinessException("Unable to proceed method");

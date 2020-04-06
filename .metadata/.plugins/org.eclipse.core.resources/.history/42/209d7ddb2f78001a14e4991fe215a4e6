@@ -3,6 +3,8 @@ package com.app.service;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import com.app.model.User;
 
 @Service
 public class UserServiceImpl implements UserService{
+
+	Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
 	private UserData userData;
@@ -48,8 +52,11 @@ public class UserServiceImpl implements UserService{
 			userData.findById(user.getId()).get();
 			// Business logic
 			accountData.saveAll(user.getAccounts());
+			
+			log.info("Updated user");
 			return userData.save(user);			
 		} catch(NoSuchElementException e) {
+			log.info("User does not exist");
 			throw new BusinessException("user does not exists");
 		}
 	}
@@ -59,8 +66,10 @@ public class UserServiceImpl implements UserService{
 		List<User> data = userData.findAll();
 		
 		if(data == null) {
+			log.info("No users found");
 			throw new BusinessException("no users found");
 		} else {
+			log.info("Retrieved all users");
 			return data;
 		}
 		
