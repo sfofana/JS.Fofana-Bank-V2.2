@@ -1,0 +1,15 @@
+package com.app.service;
+
+import java.util.List;
+
+import com.app.advice.BusinessException;
+import com.app.model.User;
+
+public interface UserService {
+	
+	public User getUser(User user) throws BusinessException;
+	public User authentication(User user) throws BusinessException;
+	public User addUser(User user) throws BusinessException;
+	public User updateUser(User user) throws BusinessException;
+	public List<User> getUsers() throws BusinessException;
+}
