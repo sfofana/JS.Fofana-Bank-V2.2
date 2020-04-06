@@ -49,9 +49,7 @@ public class UserServiceImpl implements UserService{
 		User valid = userData.findByEmail(user.getEmail());
 		User response = new User();
 		
-		if(valid == null) {
-			throw new BusinessException("user not found");
-		} else if(valid.getEmail().equals(user.getEmail())  && valid.getPassword().equals(user.getPassword())) {
+		if(valid.getEmail().equals(user.getEmail())  && valid.getPassword().equals(user.getPassword())) {
 			response = valid;
 			return response;
 		} else {
