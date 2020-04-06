@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ClientComponent implements OnInit, OnDestroy {
 
-  private user = new User();
+  private user: User;
   private view;
 
   constructor(

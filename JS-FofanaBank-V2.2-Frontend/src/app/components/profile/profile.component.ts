@@ -9,7 +9,7 @@ import { User } from 'src/app/models/user';
 })
 export class ProfileComponent implements OnInit {
 
-  private user = new User();
+  private user: User;
 
   constructor(private session: AppComponent) { }
 

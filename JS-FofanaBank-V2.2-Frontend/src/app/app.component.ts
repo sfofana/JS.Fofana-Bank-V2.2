@@ -14,8 +14,9 @@ import { takeUntil } from 'rxjs/operators';
 export class AppComponent implements OnInit, OnDestroy {
   title = "JS.Fofana Bank";
   validatingForm: FormGroup;
-  public validateUser = new User();
-  public user = new User();
+  public validateUser: User;
+  public user: User;
+  public use: User = {email: 'master@gmail.com', password: 'demo'};
   private email = "";
   private password = "";
   private success ="";
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
       loginFormModalEmail: new FormControl('', Validators.email),
       loginFormModalPassword: new FormControl('', Validators.required)
     });
+    console.log(this.use);
     // this.service.getAllUsers().subscribe(data=>{
     //   this.user=data[0];
     //   localStorage[data[0].email]= this.sessionSet;
@@ -54,8 +56,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   login(){
-    this.validateUser.email = this.email;
-    this.validateUser.password = this.password;
+    this.validateUser = {email: this.email, password: this.password};
+    console.log(this.email);
+    //this.validateUser.password = this.password;
     this.service.authentication(this.validateUser)
     .pipe(takeUntil(this.memory.unsubscribe))
     .subscribe(data=>{

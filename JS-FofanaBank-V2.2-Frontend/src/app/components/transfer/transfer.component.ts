@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class TransferComponent implements OnInit, OnDestroy {
 
-  private user = new User();
+  private user: User;
   private amount: number = 0;
   private updateAmount: number;
   private lostAmount: number;

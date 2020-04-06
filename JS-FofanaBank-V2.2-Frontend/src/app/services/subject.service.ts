@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { User } from '../models/user';
+import { ISubjectService } from './isubject-service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SubjectService {
+export class SubjectService implements ISubjectService {
 
   constructor() { }
+ 
+  behavior = new BehaviorSubject<User>(null);
 
-  public behavior = new BehaviorSubject<User>(null);
-
-  public sessionSet = new BehaviorSubject<User>(null);
-
-  public unsubscribe = new Subject();
+  sessionSet = new BehaviorSubject<User>(null);
+  
+  unsubscribe = new Subject();
 
   public session = this.sessionSet.asObservable();
 
@@ -26,5 +27,6 @@ export class SubjectService {
   public changedInfo(user: User){
     this.behavior.next(user);
   }
+  
 
 }

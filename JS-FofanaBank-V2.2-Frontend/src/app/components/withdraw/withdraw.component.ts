@@ -13,7 +13,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class WithdrawComponent implements OnInit, OnDestroy {
 
-  private user = new User();
+  private user: User;
   private amount: number = 0;
   private money: Array<number>;
   private updateAmount: number;

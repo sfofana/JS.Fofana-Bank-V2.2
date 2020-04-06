@@ -11,7 +11,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class DepositComponent implements OnInit, OnDestroy {
 
-  private user = new User();
+  private user: User;
   private amount: number = 0;
   private updateAmount: number;
   private option: number;
