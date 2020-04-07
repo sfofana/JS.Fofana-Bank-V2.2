@@ -31,9 +31,8 @@ class ApplicationTests {
 	@MockBean
 	AccountData accountdata;
 	
-	// Service Tests
 	@Test
-	public void getUsersTest() {
+	public void getUserByUsernameTest() {
 		List<User> users = new ArrayList<>();
 		User u1 = new User(1, "User","Test","test@gmail.com","password",null);	
 		User u2 = new User(2, "User2","Test2","test@gmail.com","password",null);	

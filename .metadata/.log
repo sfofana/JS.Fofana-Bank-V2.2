@@ -1693,3 +1693,21 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 12:29:45.600
 !MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.296
+!MESSAGE Preparing classpath changed notification JS.Fofana-Bank-V2.2-Backend
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.297
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.311
+!MESSAGE classpath=113 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.322
+!MESSAGE buffering callback sts4.classpath.ZmPaFImQ JS.Fofana-Bank-V2.2-Backend false 113
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.323
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-04-06 20:28:25.363
+!MESSAGE executing callback sts4.classpath.ZmPaFImQ SUCCESS [done]
