@@ -7,6 +7,7 @@ import com.app.model.User;
 
 public interface UserService {
 	
+	public String connected() throws BusinessException;
 	public User getUser(User user) throws BusinessException;
 	public User authentication(User user) throws BusinessException;
 	public User addUser(User user) throws BusinessException;

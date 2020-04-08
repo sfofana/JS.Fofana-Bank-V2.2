@@ -21,8 +21,9 @@ public class UserController {
 	private UserService userService;
 	
 	@GetMapping("/connection")
-	public void connection(){
+	public String connection(){
 		// endpoint to verify if server is running
+		return userService.connected();
 	}
 	
 	@PostMapping("/user")

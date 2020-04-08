@@ -21,24 +21,25 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User getUser(User user) throws BusinessException {
-		User data = userData.findById(user.getId()).get();
-		
-		if(data == null) {
-			return data;
-		} else {
-			throw new BusinessException("user not found");
-		}		
+		return userData.findById(user.getId()).get();
+//		User data = userData.findById(user.getId()).get();
+//		
+//		if(data == null) {
+//			throw new BusinessException("user not found");
+//		} else {		
+//			return data;
+		//}		
 	}
 
 	@Override
 	public User addUser(User user) throws BusinessException {
-		User data = userData.findById(user.getId()).get();
-		
-		if(data == null) {
+//		User data = userData.findById(user.getId()).get();
+//		
+//		if(data == null) {
 			return userData.save(user);		
-		} else {
-			throw new BusinessException("user already exists");
-		}	
+//		} else {
+//			throw new BusinessException("user already exists");
+//		}	
 	}
 
 	@Override
@@ -80,6 +81,11 @@ public class UserServiceImpl implements UserService{
 		} else {
 			throw new BusinessException("user not found");
 		}		
+	}
+
+	@Override
+	public String connected() throws BusinessException {
+		return "connected";
 	}
 
 }

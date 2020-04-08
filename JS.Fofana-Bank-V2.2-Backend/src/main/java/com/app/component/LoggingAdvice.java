@@ -20,7 +20,7 @@ public class LoggingAdvice {
 	
 	@Pointcut(value="execution(* com.app.*.*.*(..))")
 	public void PointCut() {
-		
+		return;
 	}
 	
 	@Around("PointCut()")
