@@ -1,0 +1,62 @@
+package com.app.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.app.exception.BusinessException;
+import com.app.model.User;
+import com.app.service.UserService;
+import com.app.util.JwtUtil;
+
+@RestController
+@CrossOrigin()
+public class UserController {
+
+	@Autowired
+	private HttpServletRequest request;
+	@Autowired
+	private JwtUtil jwtUtil;
+	@Autowired
+	private UserService userService;
+	
+	private final String tokenHeader = request.getHeader("Token");
+	
+	@GetMapping("/connection")
+	public String connection(){
+		// endpoint to verify if server is running
+		return userService.connected();
+	}
+	
+	@PostMapping("/session")
+	public User authenticstion(@RequestBody User user) {
+		return userService.authentication(user);
+	}
+	
+	@PutMapping("/user")
+	public User transaction(@RequestBody User user) throws BusinessException {
+		
+		User response = null;
+		
+		if(userService.tokenAuthenticated(tokenHeader, user)) {
+			response = userService.updateUser(user);
+		}else {
+			throw new BusinessException("Invalid Session");
+		}
+		
+		return response;
+	}
+	
+	@GetMapping("/user")
+	public List<User> test(){
+		return userService.getUsers();
+	}
+}

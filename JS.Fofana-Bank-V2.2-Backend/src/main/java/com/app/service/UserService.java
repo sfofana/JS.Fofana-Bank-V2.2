@@ -13,4 +13,6 @@ public interface UserService {
 	public User addUser(User user) throws BusinessException;
 	public User updateUser(User user) throws BusinessException;
 	public List<User> getUsers() throws BusinessException;
+	public User filterUser(String email) throws BusinessException;
+	public Boolean tokenAuthenticated(String token, User user) throws BusinessException;
 }

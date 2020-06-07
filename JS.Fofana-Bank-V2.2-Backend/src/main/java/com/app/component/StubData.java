@@ -21,6 +21,7 @@ public class StubData implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		User u1 = new User(
 				1, 
+				null,
 				"Amir",
 				"Kamara",
 				"master@gmail.com",
@@ -31,6 +32,7 @@ public class StubData implements CommandLineRunner{
 		
 		User u2 = new User(
 				2, 
+				null,
 				"Systyem",
 				"Admin",
 				"system@gmail.com",

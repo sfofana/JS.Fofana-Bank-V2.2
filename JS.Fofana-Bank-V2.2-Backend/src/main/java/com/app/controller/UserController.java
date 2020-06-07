@@ -2,6 +2,8 @@ package com.app.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,15 +12,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.app.exception.BusinessException;
 import com.app.model.User;
 import com.app.service.UserService;
+import com.app.util.JwtUtil;
 
 @RestController
 @CrossOrigin()
 public class UserController {
 
 	@Autowired
+	private HttpServletRequest request;
+	@Autowired
 	private UserService userService;
+	
 	
 	@GetMapping("/connection")
 	public String connection(){
@@ -26,18 +33,25 @@ public class UserController {
 		return userService.connected();
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("/session")
 	public User authenticstion(@RequestBody User user) {
 		return userService.authentication(user);
 	}
 	
 	@PutMapping("/user")
-	public User transaction(@RequestBody User user) {
+	public User transaction(@RequestBody User user) throws BusinessException {
+		if(!userService.tokenAuthenticated(getToken(), user)) {
+			throw new BusinessException("Invalid Session");
+		}
 		return userService.updateUser(user);
 	}
 	
 	@GetMapping("/user")
 	public List<User> test(){
 		return userService.getUsers();
+	}
+	
+	private String getToken() {
+		return request.getHeader("Token");
 	}
 }

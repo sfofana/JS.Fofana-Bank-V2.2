@@ -1,0 +1,60 @@
+package com.app.component;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.app.model.User;
+import com.app.service.UserService;
+import com.app.util.JwtUtil;
+
+@Component
+public class JwtRequestFilter extends OncePerRequestFilter {
+
+	@Autowired
+	private JwtUtil jwtUtil;
+	@Autowired
+	private UserService userService;
+
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+			throws ServletException, IOException {
+
+		final String tokenHeader = request.getHeader("Token");
+		
+		String email = null;
+		String jwt = null;
+		
+		if(tokenHeader != null && tokenHeader.startsWith("Bearer ")) {
+			jwt = tokenHeader.substring(7);
+			email = jwtUtil.extractUser(jwt);
+//			if(email != null) {
+//				User user = userService.filterUser(email);
+//				if(jwtUtil.validateToken(jwt, user)) {
+//					filterChain.doFilter(request, response);
+//				}
+//			}
+		}
+		
+		if(email == null) {
+			User user = userService.filterUser(email);
+			if(!jwtUtil.validateToken(jwt, user)) {
+				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
+				authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+				SecurityContextHolder.getContext().setAuthentication(authToken);
+			}
+		}
+		
+		
+	}
+}

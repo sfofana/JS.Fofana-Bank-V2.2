@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ApplicationTests" project="JS.Fofana-Bank-V2.2-Backend" tests="18" started="18" failures="0" errors="0" ignored="0">
+  <testsuite name="com.app.ApplicationTests" time="0.321" displayname="ApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]">
+    <testcase name="accountNameTest" classname="com.app.ApplicationTests" time="0.02" displayname="accountNameTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:accountNameTest()]"/>
+    <testcase name="errorMessageTest" classname="com.app.ApplicationTests" time="0.008" displayname="errorMessageTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:errorMessageTest()]"/>
+    <testcase name="addUserTest" classname="com.app.ApplicationTests" time="0.02" displayname="addUserTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:addUserTest()]"/>
+    <testcase name="userRepoTest" classname="com.app.ApplicationTests" time="0.011" displayname="userRepoTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userRepoTest()]"/>
+    <testcase name="accountIdTest" classname="com.app.ApplicationTests" time="0.017" displayname="accountIdTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:accountIdTest()]"/>
+    <testcase name="userLastnameTest" classname="com.app.ApplicationTests" time="0.009" displayname="userLastnameTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userLastnameTest()]"/>
+    <testcase name="errorMessageDetailsTest" classname="com.app.ApplicationTests" time="0.009" displayname="errorMessageDetailsTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:errorMessageDetailsTest()]"/>
+    <testcase name="userEmailTest" classname="com.app.ApplicationTests" time="0.009" displayname="userEmailTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userEmailTest()]"/>
+    <testcase name="userPasswordTest" classname="com.app.ApplicationTests" time="0.009" displayname="userPasswordTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userPasswordTest()]"/>
+    <testcase name="userRepoByEmailTest" classname="com.app.ApplicationTests" time="0.009" displayname="userRepoByEmailTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userRepoByEmailTest()]"/>
+    <testcase name="userAccountsTest" classname="com.app.ApplicationTests" time="0.008" displayname="userAccountsTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userAccountsTest()]"/>
+    <testcase name="getUsersTest" classname="com.app.ApplicationTests" time="0.01" displayname="getUsersTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:getUsersTest()]"/>
+    <testcase name="accountRepoTest" classname="com.app.ApplicationTests" time="0.008" displayname="accountRepoTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:accountRepoTest()]"/>
+    <testcase name="accountUserTest" classname="com.app.ApplicationTests" time="0.008" displayname="accountUserTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:accountUserTest()]"/>
+    <testcase name="userFirstnameTest" classname="com.app.ApplicationTests" time="0.008" displayname="userFirstnameTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userFirstnameTest()]"/>
+    <testcase name="userIdTest" classname="com.app.ApplicationTests" time="0.007" displayname="userIdTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:userIdTest()]"/>
+    <testcase name="accountAmountTest" classname="com.app.ApplicationTests" time="0.008" displayname="accountAmountTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:accountAmountTest()]"/>
+    <testcase name="authenticationTest" classname="com.app.ApplicationTests" time="0.142" displayname="authenticationTest()" uniqueid="[engine:junit-jupiter]/[class:com.app.ApplicationTests]/[method:authenticationTest()]"/>
+  </testsuite>
+</testrun>

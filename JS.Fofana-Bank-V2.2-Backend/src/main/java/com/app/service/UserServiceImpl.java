@@ -4,20 +4,27 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.app.data.AccountData;
 import com.app.data.UserData;
 import com.app.exception.BusinessException;
 import com.app.model.User;
+import com.app.util.JwtUtil;
 
 @Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
+	private JwtUtil jwtUtil;
+	@Autowired
 	private UserData userData;
 	@Autowired
 	private AccountData accountData;
+	
 	
 	@Override
 	public User getUser(User user) throws BusinessException {
@@ -77,6 +84,8 @@ public class UserServiceImpl implements UserService{
 				valid.getEmail().equals(user.getEmail())  
 				&& valid.getPassword().equals(user.getPassword())
 				) {
+			final String jwt = jwtUtil.generateToken(valid);
+			valid.setToken(jwt);
 			return valid;
 		} else {
 			throw new BusinessException("user not found");
@@ -86,6 +95,37 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String connected() throws BusinessException {
 		return "connected";
+	}
+
+	@Override
+	public User filterUser(String email) throws BusinessException {
+		return userData.findByEmail(email);
+	}
+
+	@Override
+	public Boolean tokenAuthenticated(String token, User user) throws BusinessException {
+		String email = null;
+		String jwt = null;
+		Boolean flag = false;
+		
+		if(token != null && token.startsWith("Bearer ")) {
+			jwt = token.substring(7);
+			try {
+				email = jwtUtil.extractUser(jwt);
+				if(email != null) {
+					try {
+						jwtUtil.validateToken(jwt, user);
+						flag = true;				
+					} catch (Exception e) {
+						throw new BusinessException("Invalid Session");
+					}
+				}
+			} catch (Exception e) {
+				throw new BusinessException("Invalid Session");
+			}
+			
+		}
+		return flag;
 	}
 
 }

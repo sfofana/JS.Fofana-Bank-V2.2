@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="com.app.ApplicationTests" tests="20" started="20" failures="3" errors="2" ignored="0">
+  <testsuite name="com.app.ApplicationTests" time="16.879">
+    <testcase name="accountNameTest" classname="com.app.ApplicationTests" time="0.062"/>
+    <testcase name="errorMessageTest" classname="com.app.ApplicationTests" time="0.008"/>
+    <testcase name="addUserTest" classname="com.app.ApplicationTests" time="0.042"/>
+    <testcase name="userRepoTest" classname="com.app.ApplicationTests" time="0.029">
+      <failure>java.lang.AssertionError: expected:&lt;false&gt; but was:&lt;true&gt;
+	at com.app.ApplicationTests.userRepoTest(ApplicationTests.java:182)
+</failure>
+    </testcase>
+    <testcase name="accountIdTest" classname="com.app.ApplicationTests" time="0.009"/>
+    <testcase name="userLastnameTest" classname="com.app.ApplicationTests" time="0.008"/>
+    <testcase name="errorMessageDetailsTest" classname="com.app.ApplicationTests" time="0.01"/>
+    <testcase name="userEmailTest" classname="com.app.ApplicationTests" time="0.01"/>
+    <testcase name="userPasswordTest" classname="com.app.ApplicationTests" time="0.009"/>
+    <testcase name="userRepoByEmailTest" classname="com.app.ApplicationTests" time="0.009">
+      <failure>java.lang.AssertionError
+	at com.app.ApplicationTests.userRepoByEmailTest(ApplicationTests.java:190)
+</failure>
+    </testcase>
+    <testcase name="userAccountsTest" classname="com.app.ApplicationTests" time="0.027"/>
+    <testcase name="getUsersTest" classname="com.app.ApplicationTests" time="0.008"/>
+    <testcase name="accountRepoTest" classname="com.app.ApplicationTests" time="0.006"/>
+    <testcase name="accountUserTest" classname="com.app.ApplicationTests" time="0.006"/>
+    <testcase name="updateUserTest" classname="com.app.ApplicationTests" time="0.009">
+      <error>com.app.exception.BusinessException: user does not exists
+	at com.app.ApplicationTests.updateUserTest(ApplicationTests.java:234)
+</error>
+    </testcase>
+    <testcase name="userFirstnameTest" classname="com.app.ApplicationTests" time="0.007"/>
+    <testcase name="userIdTest" classname="com.app.ApplicationTests" time="0.007"/>
+    <testcase name="accountAmountTest" classname="com.app.ApplicationTests" time="0.008">
+      <failure>java.lang.AssertionError: expected:&lt;1010.10&gt; but was:&lt;1010.1&gt;
+	at com.app.ApplicationTests.accountAmountTest(ApplicationTests.java:166)
+</failure>
+    </testcase>
+    <testcase name="authenticationTest" classname="com.app.ApplicationTests" time="0.173"/>
+    <testcase name="getUserTest" classname="com.app.ApplicationTests" time="0.008">
+      <error>java.util.NoSuchElementException: No value present
+	at com.app.ApplicationTests.getUserTest(ApplicationTests.java:207)
+</error>
+    </testcase>
+  </testsuite>
+</testrun>
